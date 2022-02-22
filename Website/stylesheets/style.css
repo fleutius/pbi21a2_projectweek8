@@ -28,10 +28,12 @@ ul li a{
 
 ul li a:hover:not(.active) {
     background-color: #111;
+    border-bottom: 3px solid rgb(87, 3, 3);
 }
 
 ul a.active{
-    background-color: rgb(87, 3, 3)
+    background-color: rgb(87, 3, 3);
+
 }
 
 .sidebar {
@@ -45,3 +47,11 @@ ul a.active{
     overflow: auto;
 }
 
+.sidebar li a{
+    padding: 1em;
+    height: 1em;
+    width: 100%;
+    text-align: left;
+    border-bottom: 1px solid #bbb;
+
+}
