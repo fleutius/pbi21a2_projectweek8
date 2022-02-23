@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="/stylesheets/style.css"/>
+        <title>User and Role creation</title>
+    </head>
+    <body>
+        <header>
+            <ul class="topnav">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/normalisering/main.html">Normalisering</a></li>
+                <li><a class="active" href="/administration/main.html">Database administration</a></li>
+                <li><a href="/procedures/main.html">Stored procedures</a></li>
+                <li><a href="/xml/main.html">XML</a></li>
+            </ul>
+            <ul class="sidebar">
+                <li><a href="main.html">Administration</a></li>
+                <li><a class="active" href="users.html">Users</a></li>
+                <li><a href="backup.html">Backup</a></li>
+            </ul>
+        </header>
+        <main>
+            <section id="content">
+            </br>
+                <article>
+                    <h2>Create User</h2>
+                    <p>For at lave nye brugere databasen bruger vi koden:</p>
+<pre><code>CREATE USER iud_user1@localhost IDENTIFIED BY 'pass1';
+CREATE USER iud_user2@localhost IDENTIFIED BY 'pass2';
+CREATE USER iud_user3@localhost IDENTIFIED BY 'pass3';
+CREATE USER i_user@localhost IDENTIFIED BY 'pass4';</code></pre>
+                </article>
+            </br>
+                <article>
+                    <h2>Create Role</h2>
+                    <p>For at lave nye roller bruger vi koden:</p>
+<pre><code>CREATE ROLE
+iud_user,
+i_user;</code></pre>
+                </article>
+            </br>
+                <article>
+                    <h2>Grant permissions to roles</h2>
+                    <p>For at give disse nye roller, nogle permissions, bruger vi følgende:</p>
+<pre><code>GRANT INSERT, UPDATE, DELETE
+ON OrdreSystem.*
+TO iud_user;</code></pre>
+<pre><code>GRANT SELECT
+ON OrdreSystem.*
+TO i_user;</code></pre>
+                </article>
+            </br>
+            <article>
+                <h2>Grant roles to users</h2>
+                <p>Til sidst tildeles rollerne til de oprettede brugere via:</p>
+<pre><code>GRANT iud_user
+TO iud_user1@localhost,
+iud_user2@localhost,
+iud_user3@localhost;</code></pre>
+<pre><code>GRANT i_user
+TO i_user@localhost;</code></pre>
+            </article>
+            </section>
+        </main>
+    </body>
+</html>
