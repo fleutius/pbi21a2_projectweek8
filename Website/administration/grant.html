@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8"/>
         <link rel="stylesheet" href="/stylesheets/style.css"/>
-        <title>User and Role creation</title>
+        <title>Granting permissions</title>
     </head>
     <body>
         <header>
@@ -15,30 +15,13 @@
                 <li><a href="/xml/main.html">XML</a></li>
             </ul>
             <ul class="sidebar">
-                <li><a href="main.html">Administration</a></li>
-                <li><a class="active" href="users.html">Users</a></li>
-                <li><a href="backup.html">Backup</a></li>
+                <li><a href="main.html">Main</a></li>
+                <li><a href="create.html">Create</a></li>
+                <li><a class="active" href="grant.html">Grant</a></li>
             </ul>
         </header>
         <main>
             <section id="content">
-            </br>
-                <article>
-                    <h2>Create User</h2>
-                    <p>For at lave nye brugere databasen bruger vi koden:</p>
-<pre><code>CREATE USER iud_user1@localhost IDENTIFIED BY 'pass1';
-CREATE USER iud_user2@localhost IDENTIFIED BY 'pass2';
-CREATE USER iud_user3@localhost IDENTIFIED BY 'pass3';
-CREATE USER i_user@localhost IDENTIFIED BY 'pass4';</code></pre>
-                </article>
-            </br>
-                <article>
-                    <h2>Create Role</h2>
-                    <p>For at lave nye roller bruger vi koden:</p>
-<pre><code>CREATE ROLE
-iud_user,
-i_user;</code></pre>
-                </article>
             </br>
                 <article>
                     <h2>Grant permissions to roles</h2>
@@ -51,16 +34,27 @@ ON OrdreSystem.*
 TO i_user;</code></pre>
                 </article>
             </br>
-            <article>
-                <h2>Grant roles to users</h2>
-                <p>Til sidst tildeles rollerne til de oprettede brugere via:</p>
+                <article>
+                    <h2>Grant roles to users</h2>
+                    <p>Til sidst tildeles rollerne til de oprettede brugere via:</p>
 <pre><code>GRANT iud_user
 TO iud_user1@localhost,
 iud_user2@localhost,
 iud_user3@localhost;</code></pre>
 <pre><code>GRANT i_user
 TO i_user@localhost;</code></pre>
-            </article>
+                </article>
+                <article>
+                    <h2>Select statements og updates fra users med Log</h2>
+                    <img src="../images/iud_user_select.png" alt="Select statement fra iud_user" width="50%"/>
+                </br>
+            </br>
+
+                    <img src="../images/iud_user_update.png" alt="Update statement fra iud_user" width="50%"/>
+                </br>
+            </br>
+                    <img src="../images/logtable.png" alt="Logtable" width="50%"/>
+                </article>
             </section>
         </main>
     </body>

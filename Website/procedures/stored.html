@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="/stylesheets/style.css"/>
+        <title>Stored procedures</title>
+    </head>
+    <body>
+        <header>
+            <ul class="topnav">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/normalisering/main.html">Normalisering</a></li>
+                <li><a href="/administration/main.html">Database administration</a></li>
+                <li><a class="active" href="/procedures/main.html">Stored procedures</a></li>
+                <li><a href="/xml/main.html">XML</a></li>
+            </ul>
+            <ul class="sidebar">
+                <li><a href="main.html">Main</a></li>
+                <li><a class="active" href="stored.html">Stored</a></li>
+                <li><a href="triggers.html">Triggers</a></li>
+            </ul>
+        </header>
+        <main>
+            <section id="content">
+            </br>
+                <article>
+                    <h2>Afregn total pris for en ordre</h2>
+                    <p>For at afregne totalprisen bruges :</p>
+<pre><code>CREATE DEFINER=root@localhost PROCEDURE priceOfOrder(IN orderID bigint)
+BEGIN
+    SELECT SUM(price) AS 'Samlet pris'
+    FROM Ordre 
+    WHERE OrdreNr = orderID;
+END</code></pre>
+            </br>
+                    <img src="../images/totalpris.png" alt="Stored procedure til udregning af total" width="50%"/>
+                </article>
+                </br>
+                <article>
+                    <h2>Besked ved lavt antal</h2>
+                    <p>For at give besked ved lav lager anstalt gøres følgende:</p>
+    <pre><code>CREATE DEFINER=root@localhost PROCEDURE check_quantity(IN productID INT)
+BEGIN
+    DECLARE C int;
+    SELECT quantity INTO C
+    FROM Product WHERE Product_ID = productID;
+    IF (C &lt;= 5)
+    THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Low on stock for that product';
+    END IF;
+END</code></pre>
+        </br>
+                    <img src="../images/quantity.png" alt="Stored procedure besked om lavt antal produkter" width="50%"/>
+                </article>
+            </section>
+        </main>
+    </body>
+
+</html>

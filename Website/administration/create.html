@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="/stylesheets/style.css"/>
+        <title>User and Role creation</title>
+    </head>
+    <body>
+        <header>
+            <ul class="topnav">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/normalisering/main.html">Normalisering</a></li>
+                <li><a class="active" href="/administration/main.html">Database administration</a></li>
+                <li><a href="/procedures/main.html">Stored procedures</a></li>
+                <li><a href="/xml/main.html">XML</a></li>
+            </ul>
+            <ul class="sidebar">
+                <li><a href="main.html">Main</a></li>
+                <li><a class="active" href="create.html">Create</a></li>
+                <li><a href="grant.html">Grant</a></li>
+            </ul>
+        </header>
+        <main>
+            <section id="content">
+            </br>
+                <article>
+                    <h2>Create User</h2>
+                    <p>For at lave nye brugere databasen bruger vi koden:</p>
+<pre><code>CREATE USER iud_user1@localhost IDENTIFIED BY 'pass1';
+CREATE USER iud_user2@localhost IDENTIFIED BY 'pass2';
+CREATE USER iud_user3@localhost IDENTIFIED BY 'pass3';
+CREATE USER i_user@localhost IDENTIFIED BY 'pass4';</code></pre>
+                </article>
+            </br>
+                <article>
+                    <h2>Create Role</h2>
+                    <p>For at lave nye roller bruger vi koden:</p>
+<pre><code>CREATE ROLE
+iud_user,
+i_user;</code></pre>
+                </article>
+            </br>
+
+            </section>
+        </main>
+    </body>
+</html>

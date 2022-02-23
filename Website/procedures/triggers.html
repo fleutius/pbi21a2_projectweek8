@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="/stylesheets/style.css"/>
+        <title>Triggers</title>
+    </head>
+    <body>
+        <header>
+            <ul class="topnav">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/normalisering/main.html">Normalisering</a></li>
+                <li><a href="/administration/main.html">Database administration</a></li>
+                <li><a class="active" href="/procedures/main.html">Stored procedures</a></li>
+                <li><a href="/xml/main.html">XML</a></li>
+            </ul>
+            <ul class="sidebar">
+                <li><a href="main.html">Main</a></li>
+                <li><a href="stored.html">Stored</a></li>
+                <li><a class="active" href="triggers.html">Triggers</a></li>
+            </ul>
+            </header>
+        <main>
+            <section id="content">
+        </br>
+                <article>
+                    <h2>Trigger til at gemme alle actions i Log Table</h2>
+                    <p>For at gemme alle actions i Log tabellen, oprettes følgende triggers:</p>
+                </article>
+        </br>
+                <article>
+                    <h2>Trigger <em>efter</em> INSERT statement</h2>
+<pre><code>CREATE TRIGGER order_insert
+    AFTER INSERT ON Ordre
+    FOR EACH ROW
+    INSERT INTO log_table
+    SET ACTION = 'insert',
+    username = USER(),
+    actionDate = NOW(),
+    orderNr = NEW.OrdreNr;</code></pre>
+                </article>
+        </br>
+                <article>
+                    <h2>Trigger <em>før</em> DELETE statement</h2>
+<pre><code>CREATE TRIGGER order_delete
+    BEFORE DELETE ON Ordre
+    FOR EACH ROW
+    INSERT INTO log_table
+    SET ACTION = 'delete',
+    username = USER(),
+    actionDate = NOW(),
+    orderNr = OLD.OrdreNr;</code></pre>
+                </article>
+</br>
+                <article>
+                    <h2>Trigger <em>før</em> UPDATE statement</h2>
+<pre><code>CREATE TRIGGER order_update
+    BEFORE UPDATE ON Ordre
+    FOR EACH ROW 
+    INSERT INTO log_table
+    SET action = 'update',
+    username = USER(),
+    actionDate = NOW(),
+    orderNr = OLD.OrdreNr;</code></pre>
+                </article>
+            </section>
+        </main>
+    </body>
+
+</html>
