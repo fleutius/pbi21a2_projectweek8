@@ -101,4 +101,5 @@ tr:nth-child(even) {
     border-radius: 25px;
     background-color: rgb(211, 211, 211);
     margin-left: 20%;
+    font-size: 18px;
 }
