@@ -67,7 +67,7 @@ ul a.active{
 
 article {
     padding: 10px;
-    width: 100%;
+    width: 45%;
     border-radius: 25px;
     background-color: rgb(211, 211, 211);
 }
@@ -77,4 +77,20 @@ pre {
     border: 2px solid black;
     width: fit-content;
     background-color: rgb(240, 240, 240);
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: fit-content;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd
 }
