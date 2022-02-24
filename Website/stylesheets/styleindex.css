@@ -14,7 +14,7 @@ header, body {
 }
 
 .topnav li{
-    float: right;
+    float: left;
     border-left: 1px solid #bbb;
 }
 
